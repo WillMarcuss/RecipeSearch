@@ -38,6 +38,18 @@ const server = http.createServer((req, res) => {
     });
   }
 
+  else if (req.url === '/bg.jpeg') {
+    const filePath = path.join(__dirname,'bg.jpeg');
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(500);
+        return res.end(`Error loading ${filePath}`);
+      }
+      res.writeHead(200, {'Content-Type': 'image/jpeg'});
+      res.end(data);
+    });
+  }
+
   // Return a 404 error for all other requests
   else {
     res.writeHead(404);

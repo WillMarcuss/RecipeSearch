@@ -10,6 +10,8 @@ function findRecipes(){
     const recipeCount = numRecipes;
     let htmlrecipeList = document.getElementById("recipes")
     const mealType = checkMealType()
+    const healthLabel = checkHealthLabel()
+    let url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}&health=${healthLabel}`;
 
     for(let i =0; i<recipeCount; i++){
         let currListElement = document.createElement("li")
@@ -21,10 +23,17 @@ function findRecipes(){
         currListElement.append(currLink)
         htmlrecipeList.append(currListElement)
     }
-    
 
+
+    if(mealType === undefined && healthLabel === undefined){
+        url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}`;
+    } else if(mealType !== undefined && healthLabel === undefined){
+        url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}`;
+    } else if(mealType === undefined && healthLabel !== undefined){
+        url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&health=${healthLabel}`;
+    }
     
-    fetch(`https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}`)
+    fetch(url)
     .then(response => response.json())
     .then(data => {
         const recipes = data.hits.map(hit => hit.recipe);
@@ -59,9 +68,19 @@ function checkMealType(){
         }
     }
 
-    return "dinner"
+    return ;
+}
 
-    
+function checkHealthLabel(){
+    let healthLabel = document.getElementsByName('restrictions')
+    for(let rs of healthLabel){
+        if(rs.checked){
+            console.log(rs.value)
+            return rs.value;
+        }
+    }
+
+    return ;
 }
 
 

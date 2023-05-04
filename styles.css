@@ -9,39 +9,74 @@ body{
     background-image: url('bg.jpeg');
 }
 
-.wrapper{
+.wrapper {
     display: flex;
-    justify-content: right;
-    align-items:start;
-}
-
-.list_wrap ul li{
-    background: #a58163;
-    margin-bottom: 7px;
-    padding: 15px 30px;
-    width: 300px;
-    color: #fff;
-    font-size: 25px;
-    line-height: 22px;
-    border-radius: 50px;
-    position: relative;
-}
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .list_wrap {
+    width: 40%;
+    height: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #888888;
+    overflow-y: auto;
+  }
+  
+  .list_wrap ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #888888;
+  }
+  
 
 .list_wrap ul li:last-child{
     margin-bottom: 0;
 }
 
-.Tfield{
+.Tfield {
     width: 30%;
-    padding: 20px 10px;
-    border-radius: 50px;
+    padding: 12px 20px;
     margin-top: 5%;
-}
-
-.button{
-    width: 15%;
+    box-sizing: border-box;
+    border: 2px solid #4CAF50;
     border-radius: 50px;
-}
+    font-size: 16px;
+    background-color: white;
+    transition: border-color 0.3s ease;
+  }
+  
+  .Tfield:focus {
+    outline: none;
+    border-color: #3e8e41;
+  }
+  
+
+.button {
+    display: inline-block;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+  
+  .button:hover {
+    background-color: #3e8e41;
+  }
+  
 
 .slidecontainer{
     width: 60%;
@@ -82,3 +117,81 @@ body{
     cursor: pointer;
 }
 
+form {
+    margin-top: 5%;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  input[type="radio"] + label {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+  
+  input[type="radio"]:checked + label {
+    background-color: #1c401d;
+  }
+  
+  #numRecipes {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+  
+  #recipes li {
+    background-color: #04AA6D;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 25px;
+    border-radius: 50px;
+    margin-bottom: 7px;
+    line-height: 22px;
+    text-align: center;
+    box-shadow: none;
+  }
+  
+  
+  #recipes li img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #recipes li h3 {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  #recipes li p {
+    margin-bottom: 10px;
+  }
+  
+  #recipes li a {
+    background-color: #04AA6D;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  #recipes li a:hover {
+    background-color: #3c8d6e;
+  }
+  
+  

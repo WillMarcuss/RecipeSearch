@@ -8,8 +8,8 @@ function findRecipes(){
     let ingredients = ingredientList.toString();
     const query = ingredients
     const recipeCount = numRecipes;
-    const mealType = "lunch"
     let htmlrecipeList = document.getElementById("recipes")
+    const mealType = checkMealType()
 
     for(let i =0; i<recipeCount; i++){
         let currListElement = document.createElement("li")
@@ -48,6 +48,20 @@ function displayRecipes(){
         document.getElementById(elementID).innerHTML = recipeList[i]
     }
    
+}
+
+function checkMealType(){
+    let mealType = document.getElementsByName("mealtype")
+    for(let mt of mealType){
+        if(mt.checked){
+            console.log(mt.value)
+            return mt.value
+        }
+    }
+
+    return "dinner"
+
+    
 }
 
 

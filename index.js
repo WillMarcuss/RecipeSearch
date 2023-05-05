@@ -6,6 +6,7 @@ let numRecipes = 0
 let Inum = 0
 let once = false
 let btns = []
+numCalories = 0
 function findRecipes() {
     if (ingredientList.length > 0) {
         const appID = "126f853d"
@@ -182,4 +183,15 @@ slider.oninput = function () {
     console.log(this.value);
     document.getElementById("numRecipes").innerHTML = "Show me " + this.value + " recipes"
     numRecipes = this.value
+}
+
+var Cslider = document.getElementById("calorie-slider");
+document.getElementById("numCals").innerHTML = "Calories: " + numCalories
+numCalories = Cslider.value
+
+// Update the current slider value (each time you drag the slider handle)
+Cslider.oninput = function () {
+    console.log(this.value);
+    document.getElementById("numCals").innerHTML = "Calories: " + numCalories
+    numCalories = this.value
 }

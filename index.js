@@ -2,6 +2,9 @@ let ingredientList = []
 let recipeList = []
 let recipeURL = []
 let numRecipes = 0
+let Inum = 0
+let once = false
+let btns = []
 function findRecipes() {
     if (ingredientList.length > 0) {
         const appID = "126f853d"
@@ -86,20 +89,48 @@ function checkHealthLabel() {
 
 
 function addToList() {
+    const container = document.querySelector('#list')
     if (document.getElementById("ingredient").value !== "" && !ingredientList.includes(document.getElementById("ingredient").value)) {
 
         let li = document.createElement('li')
         document.getElementById("list").append(li)
-        let div1 = document.createElement('div')
-        div1.classList.add('list')
-        let div2 = document.createElement('div')
+        let div2 = document.createElement('BUTTON')
+        div2.id= "I"+Inum
+        Inum++
+        console.log(div2.id)
         div2.classList.add('content')
+
+        if(once == false){
+            container.addEventListener('click',function(e){
+                console.log(e.target.id)
+                deleteItem(e.target.id)
+            });
+        }
+        once = true
         div2.innerHTML = "--> " + document.getElementById("ingredient").value
         ingredientList.push(document.getElementById("ingredient").value)
         document.getElementById("ingredient").value = ''
-        li.append(div1)
-        div1.append(div2)
+        li.append(div2)
     }
+}
+
+function deleteItem(eleID){
+   var mylist = document.getElementById("list")
+
+   mylist.querySelectorAll('button').forEach(function(item){
+        if(item.id === eleID){
+            console.log("if "+item.id +" = "+eleID)
+            console.log("removing: "+eleID)
+            item.remove();
+            let index = eleID.split("")[1]
+            console.log(index)
+            console.log(ingredientList[index])
+            ingredientList.splice(index)
+
+           
+            
+        }
+   });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -108,6 +139,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("find_recipes").addEventListener('click', findRecipes)
     document.addEventListener('keyup', handleKeyUp)
     document.getElementById("ingredient").addEventListener('input',doesExist)
+
+   
+
+
+
 })
 
 function doesExist(){

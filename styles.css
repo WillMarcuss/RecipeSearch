@@ -6,7 +6,12 @@
 }
 
 body{
-    background-image: url('bg.jpeg');
+    /* background-image: url('bg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; */
+
+    background-color: #ba9a9a47;
 }
 
 .wrapper {
@@ -19,14 +24,16 @@ body{
   .list_wrap {
     width: 40%;
     height: 100%;
-    background-color: #f2f2f2;
+    background-color: #b49191;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #888888;
+    box-shadow: 10px 5px 5px red;
     overflow-y: auto;
   }
+
   
-  .list_wrap ul li {
+  .list_wrap ul button {
+    display: grid;
     font-size: 18px;
     margin-bottom: 10px;
     padding: 10px;
@@ -35,12 +42,13 @@ body{
     box-shadow: 0px 0px 5px #888888;
   }
 
-  .list_wrap ul li:hover{
+
+  .list_wrap ul button:hover{
     background-color: #888888;
   }
   
 
-.list_wrap ul li:last-child{
+.list_wrap ul button:last-child{
     margin-bottom: 0;
 }
 
@@ -167,7 +175,7 @@ form {
 
   #numRecipes {
     font-size: 20px;
-    color: #fff;
+    color: #000000;
     text-align: center;
     margin-top: 20px;
 }

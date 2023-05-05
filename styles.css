@@ -203,7 +203,7 @@ form {
 
   
   #recipes li {
-    background-color: #04AA6D;
+    background-color: #85d0ffca;
     color: #fff;
     padding: 15px 30px;
     font-size: 25px;
@@ -233,7 +233,7 @@ form {
   }
   
   #recipes li a {
-    background-color: #04AA6D;
+    background-color: #6584ff;
     border-radius: 20px;
     color: #fff;
     font-weight: bold;

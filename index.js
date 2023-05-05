@@ -17,7 +17,8 @@ function findRecipes() {
         let htmlrecipeList = document.getElementById("recipes")
         const mealType = checkMealType()
         const healthLabel = checkHealthLabel()
-        let url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}&health=${healthLabel}`;
+        let calories = checkCalories()
+        let url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}&health=${healthLabel}`+calories;
 
         for (let i = 0; i < recipeCount; i++) {
             let currListElement = document.createElement("li")
@@ -38,12 +39,14 @@ function findRecipes() {
 
 
         if (mealType === undefined && healthLabel === undefined) {
-            url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}`;
+            url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}`+calories;
         } else if (mealType !== undefined && healthLabel === undefined) {
-            url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}`;
+            url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&mealType=${mealType}`+calories;
         } else if (mealType === undefined && healthLabel !== undefined) {
-            url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&health=${healthLabel}`;
+            url = `https://api.edamam.com/search?q=${query}&app_id=${appID}&app_key=${appKey}&to=${recipeCount}&health=${healthLabel}`+calories;
         }
+
+        console.log(url)
 
         fetch(url)
             .then(response => response.json())
@@ -73,6 +76,11 @@ function displayRecipes() {
         
     }
 
+    if(recipeList.length == 0){
+        console.log("no recipes match your search")
+        
+    }
+
 }
 
 function checkMealType() {
@@ -97,6 +105,17 @@ function checkHealthLabel() {
     }
 
     return;
+}
+
+function checkCalories(){
+    let checkbox = document.getElementById("setCals")
+    if(checkbox.checked){
+        let lb = numCalories
+        let ub = parseInt(numCalories)+250
+        return "&calories="+lb+"-"+ub;
+    }
+
+    return "";
 }
 
 function addToList() {

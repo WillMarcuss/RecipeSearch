@@ -1,6 +1,7 @@
 let ingredientList = []
 let recipeList = []
 let recipeURL = []
+let foodImgs = []
 let numRecipes = 0
 let Inum = 0
 let once = false
@@ -19,12 +20,18 @@ function findRecipes() {
 
         for (let i = 0; i < recipeCount; i++) {
             let currListElement = document.createElement("li")
+            let currImg = document.createElement("img")
             let currLink = document.createElement("a")
             let num = i + 1
             currLink.id = "r" + num;
             currLink.target = "_blank"
             currLink.href = ""
+            currImg.src =""
+            currImg.id = "img"+num
+            currImg.height = "100"
+            currImg.width = "100"
             currListElement.append(currLink)
+            currListElement.append(currImg)
             htmlrecipeList.append(currListElement)
         }
 
@@ -44,6 +51,7 @@ function findRecipes() {
                 recipes.forEach(recipe => recipeList.push(recipe.label));
                 recipes.forEach(recipe => recipeURL.push(recipe.shareAs));
                 recipes.forEach(recipe => console.log(recipe));
+                recipes.forEach(recipe => foodImgs.push(recipe.image))
                 displayRecipes()
             })
             .catch(error => console.error(error));
@@ -56,9 +64,12 @@ function displayRecipes() {
     for (let i = 0; i < recipeList.length; i++) {
         let num = i + 1
         let elementID = "r" + num
+        let imgID = "img"+num
         console.log(elementID)
         document.getElementById(elementID).href = recipeURL[i]
         document.getElementById(elementID).innerHTML = recipeList[i]
+        document.getElementById(imgID).src = foodImgs[i]
+        
     }
 
 }
@@ -86,7 +97,6 @@ function checkHealthLabel() {
 
     return;
 }
-
 
 function addToList() {
     const container = document.querySelector('#list')
@@ -136,10 +146,6 @@ function reassignIDS(index){
     for(let i = index; i< mylist.length; i++){
         mylist[i].id = "I"+i
     }
-
-   
-
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -148,11 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("find_recipes").addEventListener('click', findRecipes)
     document.addEventListener('keyup', handleKeyUp)
     document.getElementById("ingredient").addEventListener('input',doesExist)
-
-   
-
-
-
 })
 
 function doesExist(){

@@ -86,8 +86,7 @@ function checkHealthLabel() {
 
 
 function addToList() {
-    if (document.getElementById("ingredient").value !== "") {
-
+    if (document.getElementById("ingredient").value !== "" && !ingredientList.includes(document.getElementById("ingredient").value)) {
 
         let li = document.createElement('li')
         document.getElementById("list").append(li)
@@ -107,9 +106,17 @@ document.addEventListener('DOMContentLoaded', function () {
     //This function is called after the browser has loaded the web page
     document.getElementById("addBtn").addEventListener('click', addToList)
     document.getElementById("find_recipes").addEventListener('click', findRecipes)
-
     document.addEventListener('keyup', handleKeyUp)
+    document.getElementById("ingredient").addEventListener('input',doesExist)
 })
+
+function doesExist(){
+    if (ingredientList.includes(document.getElementById("ingredient").value)) {
+        document.getElementById("ingredient").style.border = "2px solid #ff1100"
+    } else{
+        document.getElementById("ingredient").style.border = "2px solid #4CAF50"
+    }
+}
 
 function handleKeyUp(e) {
     if (e.which == 13) {

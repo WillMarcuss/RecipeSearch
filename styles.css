@@ -11,7 +11,7 @@ body{
 
 .wrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 100%;
   }
@@ -34,11 +34,24 @@ body{
     background-color: #fff;
     box-shadow: 0px 0px 5px #888888;
   }
+
+  .list_wrap ul li:hover{
+    background-color: #888888;
+  }
   
 
 .list_wrap ul li:last-child{
     margin-bottom: 0;
 }
+
+.topButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 
 .Tfield {
     width: 30%;
@@ -55,6 +68,10 @@ body{
   .Tfield:focus {
     outline: none;
     border-color: #3e8e41;
+  }
+
+  .Tfield:hover{
+    background-color: #d4d4d4;
   }
   
 
@@ -79,7 +96,8 @@ body{
   
 
 .slidecontainer{
-    width: 60%;
+    width: 100%;
+    justify-content: center;
 }
 
 .slider{
@@ -88,7 +106,7 @@ body{
     width: 100%;
     height: 15px;
     border-radius: 5px;
-    background: #d3d3d3;
+    background: #a8f283;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -141,6 +159,12 @@ form {
     background-color: #1c401d;
   }
   
+.rButtons{
+    display: flex;
+    justify-content: center;
+    border: 6px solid darkred;
+}
+
   #numRecipes {
     font-size: 20px;
     color: #fff;

@@ -116,21 +116,30 @@ function addToList() {
 
 function deleteItem(eleID){
    var mylist = document.getElementById("list")
-
+    let index
    mylist.querySelectorAll('button').forEach(function(item){
         if(item.id === eleID){
             console.log("if "+item.id +" = "+eleID)
             console.log("removing: "+eleID)
             item.remove();
-            let index = eleID.split("")[1]
-            console.log(index)
+            index = eleID.split("")[1]
+            console.log("splicing: "+index)
             console.log(ingredientList[index])
-            ingredientList.splice(index)
-
-           
-            
+            ingredientList.splice(index,1)
         }
    });
+   reassignIDS(index)
+}
+
+function reassignIDS(index){
+    var mylist = document.getElementById("list").querySelectorAll('button')
+    for(let i = index; i< mylist.length; i++){
+        mylist[i].id = "I"+i
+    }
+
+   
+
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {

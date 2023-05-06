@@ -6,11 +6,6 @@
 }
 
 body{
-    /* background-image: url('bg.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; */
-
     background-color: #ba9a9a47;
 }
 
@@ -178,7 +173,13 @@ form {
   }
   
   input[type="radio"]:checked + label {
-    background-color: #1c401d;
+    background-color: blue;
+  }
+
+  input[type="radio"]+label:hover{
+    background-color: blue;
+    transition-duration: 0.5s;
+    transition: 0.1s;
   }
   
 .rButtons{
@@ -267,4 +268,9 @@ form {
 
 .checkbox{
     margin-left: 15px;
+}
+
+.navButtons{
+    display: flex;
+    justify-content: left;
 }

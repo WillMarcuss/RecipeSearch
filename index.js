@@ -205,7 +205,7 @@ slider.oninput = function () {
 }
 
 var Cslider = document.getElementById("calorie-slider");
-document.getElementById("numCals").innerHTML = "Calories: " + numCalories
+document.getElementById("numCals").innerHTML = "Calories: " + Cslider.value
 numCalories = Cslider.value
 
 // Update the current slider value (each time you drag the slider handle)

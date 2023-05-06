@@ -14,6 +14,18 @@ const server = http.createServer((req, res) => {
       res.end(data);
     });
   } 
+
+  else if (req.url === '/' || req.url === '/homePage.html') {
+    fs.readFile('homePage.html', (err, data) => {
+      if (err) {
+        res.writeHead(500);
+        return res.end('Error loading homePage.html');
+      }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end(data);
+    });
+  } 
+
   // Serve the styles.css file
   else if (req.url === '/styles.css') {
     const filePath = path.join(__dirname,'styles.css');

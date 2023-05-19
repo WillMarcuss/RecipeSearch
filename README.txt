@@ -1,5 +1,11 @@
 NOTE: THIS PROGRAM IS STILL IN CONSTRUCTION WITH FURTHER FUNCTIONALITY AND IMPLEMENTATIONS.
 
+API instructions:
+
+    1. Head to this website: https://developer.edamam.com/edamam-recipe-api
+    2. Use the free version API to obtain your unique key and ID
+    3. Replace your unique key and ID in the index.js file
+
 Server Run Instrctions:
 
     1. Open terminal in folder where server.js is located

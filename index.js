@@ -9,8 +9,8 @@ let btns = []
 numCalories = 0
 function findRecipes() {
     if (ingredientList.length > 0) {
-        const appID = "126f853d"
-        const appKey = "b75a83140f5fb9afb204013ae01fbc43"
+        const appID = "YOUR_APP_ID"
+        const appKey = "YOUR_APP_KEY"
         let ingredients = ingredientList.toString();
         const query = ingredients
         const recipeCount = numRecipes;
